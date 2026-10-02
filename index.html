@@ -265,7 +265,7 @@
                 
                 <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 text-xs text-slate-500 dark:text-slate-400">
                     <span class="font-medium">Filter:</span>
-                    <button onclick="filterCategory('all')" class="cat-filter-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium transition-all" data-cat="all">All (5)</button>
+                    <button onclick="filterCategory('all')" class="cat-filter-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium transition-all" data-cat="all">All (6)</button>
                     <button onclick="filterCategory('Utilities')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Utilities">Utilities</button>
                     <button onclick="filterCategory('Minecraft')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Minecraft">Minecraft</button>
                     <button onclick="filterCategory('Documentation')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Documentation">Docs</button>
@@ -523,74 +523,86 @@
 
     <script>
         // Core Data Array representing the External Services
-        const servicesData = [
-            {
-                id: 'file-manager',
-                title: 'TREDT File Manager',
-                url: 'https://tredt-file-manager-frontend.onrender.com/',
-                brief: 'A secure cloud file management tool designed to effortlessly access our digital assets anytime.',
-                icon: 'fa-cloud-arrow-up',
-                category: 'Utilities',
-                status: 'Live',
-                statusColor: 'emerald',
-                badgeText: 'Cloud Storage',
-                accentGradient: 'from-indigo-500 to-blue-600',
-                features: ['Secure Cloud Storage', 'Directory Management', 'Instant Asset Access']
-            },
-            {
-                id: 'weather-wb',
-                title: 'TREDT Weather WB',
-                url: 'https://tredt-weather-wb.netlify.app/',
-                brief: 'Real-time weather forecasting platform delivering live temperature updates, atmospheric insights, and accurate meteorological forecasts for the specific location.',
-                icon: 'fa-cloud-sun-rain',
-                category: 'Utilities',
-                status: 'Live',
-                statusColor: 'emerald',
-                badgeText: 'Forecasting',
-                accentGradient: 'from-cyan-500 to-blue-500',
-                features: ['Live Meteorological Data', 'Temperature & Atmospheric Insights']
-            },
-            {
-                id: 'smp1-archive',
-                title: 'TREDT SMP1 Archive',
-                url: 'https://tredtsmp1-archive.netlify.app/',
-                brief: 'Comprehensive historical archives and community records for TREDT SMP Season 1, preserving key builds, logs, and legacy milestones.',
-                icon: 'fa-cubes',
-                category: 'Minecraft',
-                status: 'Archived',
-                statusColor: 'amber',
-                badgeText: 'Season 1 Legacy',
-                accentGradient: 'from-amber-500 to-orange-600',
-                features: ['Historical Chat & Chat Logs', 'Season 1 Build Showcase', 'Faction Milestones & Records', 'World Download Repositories']
-            },
-            {
-                id: 'smp2-archive',
-                title: 'TREDT SMP2 Archive',
-                url: 'https://tredt-smp2-archive.netlify.app/',
-                brief: 'Comprehensive historical archives and community records for TREDT SMP Season 2, preserving key builds and logs.',
-                icon: 'fa-cubes',
-                category: 'Minecraft',
-                status: 'Archived',
-                statusColor: 'amber',
-                badgeText: 'Season 2 Legacy',
-                accentGradient: 'from-purple-500 to-pink-600',
-                features: ['World Records Showcase', 'Community Landmark Maps']
-            },
-            {
-                id: 'union-archive',
-                title: 'TREDT Union Archive',
-                url: 'https://tredtunion-archive.netlify.app/',
-                brief: 'Centralized database and documentation archive detailing the complete history, structure, announcements, and key initiatives of TREDT Union.',
-                icon: 'fa-vault',
-                category: 'Documentation',
-                status: 'Live Hub',
-                statusColor: 'emerald',
-                badgeText: 'Official Portal',
-                accentGradient: 'from-emerald-500 to-teal-600',
-                features: ['Official Charters & Policies', 'Central Directive Records', 'Project History Logs', 'Community Announcements']
-            }
-        ];
-
+const servicesData = [
+    {
+        id: 'file-manager',
+        title: 'TREDT File Manager',
+        url: 'https://tredt-file-manager-frontend.onrender.com/',
+        brief: 'A secure cloud file management tool designed to effortlessly access our digital assets anytime.',
+        icon: 'fa-cloud-arrow-up',
+        category: 'Utilities',
+        status: 'Live',
+        statusColor: 'emerald',
+        badgeText: 'Cloud Storage',
+        accentGradient: 'from-indigo-500 to-blue-600',
+        features: ['Secure Cloud Storage', 'Directory Management', 'Instant Asset Access']
+    },
+    {
+        id: 'weather-wb',
+        title: 'TREDT Weather WB',
+        url: 'https://tredt-weather-wb.netlify.app/',
+        brief: 'Real-time weather forecasting platform delivering live temperature updates, atmospheric insights, and accurate meteorological forecasts for the specific location.',
+        icon: 'fa-cloud-sun-rain',
+        category: 'Utilities',
+        status: 'Live',
+        statusColor: 'emerald',
+        badgeText: 'Forecasting',
+        accentGradient: 'from-cyan-500 to-blue-500',
+        features: ['Live Meteorological Data', 'Temperature & Atmospheric Insights']
+    },
+    {
+        id: 'smp1-archive',
+        title: 'TREDT SMP1 Archive',
+        url: 'https://tredtsmp1-archive.netlify.app/',
+        brief: 'Comprehensive historical archives and community records for TREDT SMP Season 1, preserving key builds, logs, and legacy milestones.',
+        icon: 'fa-cubes',
+        category: 'Minecraft',
+        status: 'Archived',
+        statusColor: 'amber',
+        badgeText: 'Season 1 Legacy',
+        accentGradient: 'from-amber-500 to-orange-600',
+        features: ['Historical Chat & Chat Logs', 'Season 1 Build Showcase', 'Faction Milestones & Records', 'World Download Repositories']
+    },
+    {
+        id: 'smp2-archive',
+        title: 'TREDT SMP2 Archive',
+        url: 'https://tredt-smp2-archive.netlify.app/',
+        brief: 'Comprehensive historical archives and community records for TREDT SMP Season 2, preserving key builds and logs.',
+        icon: 'fa-cubes',
+        category: 'Minecraft',
+        status: 'Archived',
+        statusColor: 'amber',
+        badgeText: 'Season 2 Legacy',
+        accentGradient: 'from-purple-500 to-pink-600',
+        features: ['World Records Showcase', 'Community Landmark Maps']
+    },
+    {
+        id: 'union-archive',
+        title: 'TREDT Union Archive',
+        url: 'https://tredtunion-archive.netlify.app/',
+        brief: 'Centralized database and documentation archive detailing the complete history, structure, announcements, and key initiatives of TREDT Union.',
+        icon: 'fa-vault',
+        category: 'Documentation',
+        status: 'Live Hub',
+        statusColor: 'emerald',
+        badgeText: 'Official Portal',
+        accentGradient: 'from-emerald-500 to-teal-600',
+        features: ['Official Charters & Policies', 'Central Directive Records', 'Project History Logs', 'Community Announcements']
+    },
+    {
+        id: 'smp3-map',
+        title: 'TREDT SMP3 Map',
+        url: 'https://tredtsmp3-map.netlify.app/#overworld:28:0:-327:1500:0:0:0:0:perspective',
+        brief: 'Interactive live world map for TREDT SMP Season 3, featuring overworld perspective views, coordinate navigation, and live terrain details.',
+        icon: 'fa-map-location-dot',
+        category: 'Minecraft',
+        status: 'Live',
+        statusColor: 'emerald',
+        badgeText: 'Season 3 Map',
+        accentGradient: 'from-emerald-500 to-cyan-600',
+        features: ['Interactive Latest World Map', 'Multi-Dimensional Perspective View']
+    }
+];
         // State variables
         let activeTabId = 'file-manager';
         let currentViewMode = 'tab'; // 'tab' or 'grid'
