@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREDT UNION</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                            accent: '#06b6d4',
+                        },
+                        darkbg: '#0B0F19',
+                        darkcard: '#111827',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.03)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light mode default body */
+        html:not(.dark) body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        /* Dark mode body */
+        html.dark body {
+            background-color: #080B11;
+            color: #F3F4F6;
+        }
+
+        /* Glassmorphism card styles - Light Theme */
+        html:not(.dark) .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        html:not(.dark) .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+        }
+
+        html:not(.dark) .glass-tab {
+            background: rgba(241, 245, 249, 0.8);
+            border: 1px solid rgba(203, 213, 225, 0.8);
+            transition: all 0.25s ease-in-out;
+            color: #334155;
+        }
+
+        html:not(.dark) .glass-tab:hover {
+            background: rgba(226, 232, 240, 0.9);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-1px);
+        }
+
+        html:not(.dark) .glass-tab.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border-color: rgba(99, 102, 241, 0.6);
+            color: #4338ca;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Glassmorphism card styles - Dark Theme */
+        html.dark .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+        }
+
+        html.dark .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        html.dark .glass-tab {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.25s ease-in-out;
+            color: #94a3b8;
+        }
+
+        html.dark .glass-tab:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-1px);
+            color: #f1f5f9;
+        }
+
+        html.dark .glass-tab.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(6, 182, 212, 0.15) 100%);
+            border-color: rgba(99, 102, 241, 0.6);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+        }
+
+        html:not(.dark) .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        html.dark .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white bg-grid-pattern relative">
+
+    <!-- Background Gradient Glows -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-indigo-600/10 dark:bg-indigo-600/15 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-cyan-600/10 dark:bg-cyan-600/15 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-[2px] shadow-lg shadow-indigo-500/20">
+                    <div class="w-full h-full bg-slate-900 dark:bg-darkbg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-cubes-stacked text-indigo-400 text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
+                        TREDT UNION
+                    </h1>
+                    <p class="text-xs text-indigo-600 dark:text-indigo-300/70 font-semibold tracking-wide uppercase">Services & Infrastructure</p>
+                </div>
+            </div>
+
+            <!-- Header Right Controls -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Status Badge -->
+                <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-ping"></span>
+                    <span>SYSTEMS ONLINE</span>
+                </div>
+
+                <!-- Light / Dark Theme Switcher Tool -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3 py-1.5 rounded-xl bg-slate-200/80 dark:bg-slate-900/90 hover:bg-slate-300 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-indigo-300 text-xs font-semibold transition-all flex items-center gap-2 shadow-sm" title="Switch Theme">
+                    <i id="themeIcon" class="fa-solid fa-moon text-indigo-600 dark:text-indigo-400"></i>
+                    <span id="themeBtnText" class="hidden sm:inline">Dark Mode</span>
+                </button>
+
+                <!-- Support & Contact Button -->
+                <button onclick="openContactModal()" class="px-3 py-1.5 rounded-xl bg-slate-200/80 dark:bg-slate-900/90 hover:bg-slate-300 dark:hover:bg-slate-800 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-indigo-300 text-xs font-semibold transition-all flex items-center gap-2 shadow-sm" title="Report Issue or Contact Support">
+                    <i class="fa-solid fa-headset text-indigo-600 dark:text-indigo-400"></i>
+                    <span class="hidden md:inline">Support</span>
+                </button>
+
+                <!-- View Mode Switcher -->
+                <div class="flex items-center bg-slate-200/80 dark:bg-slate-900/90 p-1 rounded-xl border border-slate-300 dark:border-white/10 shadow-inner">
+                    <button id="viewTabBtn" onclick="switchViewMode('tab')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 bg-indigo-600 text-white shadow-sm" title="Tabbed View">
+                        <i class="fa-solid fa-folder-closed"></i>
+                        <span class="hidden md:inline">Tabs</span>
+                    </button>
+                    <button id="viewGridBtn" onclick="switchViewMode('grid')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 flex items-center gap-2" title="Grid View">
+                        <i class="fa-solid fa-grip"></i>
+                        <span class="hidden md:inline">Grid</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
+
+        <!-- Hero Welcome Banner -->
+        <section class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-network-wired text-9xl text-indigo-600 dark:text-indigo-400"></i>
+            </div>
+            
+            <div class="max-w-3xl relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-300 text-xs font-medium mb-3">
+                    <i class="fa-solid fa-bolt text-xs text-amber-500"></i>
+                    <span>Central Ecosystem Hub</span>
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+                    Explore <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 dark:from-indigo-400 dark:via-cyan-400 dark:to-emerald-400">TREDT UNION</span> Digital Assets
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Access real-time utilities, Minecraft community historical archives, cloud storage solutions, and governance documentation—all in one centralized portal.
+                </p>
+            </div>
+
+            <!-- Search & Quick Filter Bar -->
+            <div class="mt-6 pt-6 border-t border-slate-200 dark:border-white/5 flex flex-wrap items-center justify-between gap-4">
+                <div class="relative flex-1 min-w-[240px]">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search services, archives, leadership, or features..." class="w-full bg-white/80 dark:bg-slate-950/60 border border-slate-300 dark:border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all">
+                </div>
+                
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 text-xs text-slate-500 dark:text-slate-400">
+                    <span class="font-medium">Filter:</span>
+                    <button onclick="filterCategory('all')" class="cat-filter-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium transition-all" data-cat="all">All (5)</button>
+                    <button onclick="filterCategory('Utilities')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Utilities">Utilities</button>
+                    <button onclick="filterCategory('Minecraft')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Minecraft">Minecraft</button>
+                    <button onclick="filterCategory('Documentation')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Documentation">Docs</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrated TREDT Union Governance Section (No External Links) -->
+        <section class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-200 dark:border-white/10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 via-indigo-600 to-cyan-500 p-[2px] shadow-lg shrink-0">
+                        <div class="w-full h-full bg-slate-900 dark:bg-slate-950 rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid fa-building-columns text-indigo-300 text-lg"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">TREDT Union Governance</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Executive leadership structure, judicial appointments, and founding administration</p>
+                    </div>
+                </div>
+                <span class="hidden sm:inline-flex px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-300 text-xs font-mono font-semibold">
+                    Official Roster
+                </span>
+            </div>
+
+            <!-- Executive & Judicial Leadership Roster -->
+            <div class="mb-8">
+                <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-500"></i> Executive & Judicial Officers
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-card p-4 rounded-xl border border-amber-500/30 bg-amber-500/5 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-950 border border-amber-500/20 dark:border-white/10 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-user-tie text-amber-600 dark:text-amber-400"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block">President of Union</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Ishaan Das</h5>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl border border-indigo-500/30 bg-indigo-500/5 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-950 border border-indigo-500/20 dark:border-white/10 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-landmark text-indigo-600 dark:text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block">VP & Central Council Pres.</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Ethan Joseph</h5>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl border border-cyan-500/30 bg-cyan-500/5 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-950 border border-cyan-500/20 dark:border-white/10 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-chess-rook text-cyan-600 dark:text-cyan-400"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block">Central House Governor</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Hemang Chugh</h5>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-950 border border-emerald-500/20 dark:border-white/10 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-gavel text-emerald-600 dark:text-emerald-400"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block">Chief Justice of Union</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Naved Khan</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Founding Members -->
+            <div>
+                <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-crown text-indigo-600 dark:text-indigo-400"></i> Key Founding Members
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="glass-card p-4 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-slate-900/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase block">Founder</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Zanyung Ronrie</h5>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-700 dark:text-amber-300 text-[10px] font-extrabold font-mono border border-amber-500/30">FOUNDER</span>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-slate-900/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase block">Co-Founder</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Ethan Joseph</h5>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-[10px] font-extrabold font-mono border border-indigo-500/30">CO-FOUNDER</span>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-slate-900/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase block">Co-Founder</span>
+                            <h5 class="text-sm font-bold text-slate-900 dark:text-white">Soumya D. Das</h5>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 text-[10px] font-extrabold font-mono border border-cyan-500/30">CO-FOUNDER</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 1: TABBED VIEW CONTAINER -->
+        <section id="tabViewContainer" class="flex flex-col gap-6">
+            <!-- Navigation Tabs Bar -->
+            <div class="glass-card p-2 rounded-2xl overflow-x-auto">
+                <div id="tabsList" class="flex items-center gap-2 min-w-max">
+                    <!-- Dynamic Tabs rendered via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Active Tab Service Detail Card -->
+            <div id="tabDetailCard" class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden min-h-[380px] flex flex-col justify-between">
+                <!-- Content injected dynamically -->
+            </div>
+        </section>
+
+        <!-- VIEW 2: ALL SERVICES GRID VIEW CONTAINER -->
+        <section id="gridViewContainer" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic Cards rendered via JavaScript -->
+        </section>
+
+        <!-- LIVE FRAME PREVIEW CONTAINER -->
+        <section id="previewSection" class="hidden glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col gap-4 border border-indigo-500/30">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-white/10">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <h3 id="previewTitle" class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">Live Frame Preview</h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a id="previewExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                        <span>Open Full Screen</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                    <button onclick="closePreviewFrame()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="w-full h-[550px] rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-950 relative">
+                <div id="iframeLoader" class="absolute inset-0 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm z-10 text-white gap-3">
+                    <i class="fa-solid fa-circle-notch fa-spin text-2xl text-indigo-400"></i>
+                    <span class="text-xs font-mono font-medium">Connecting to endpoint...</span>
+                </div>
+                <iframe id="serviceIframe" class="w-full h-full border-0" src="about:blank"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Portal Footer -->
+    <footer class="glass-nav mt-auto border-t border-slate-200 dark:border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-cubes text-indigo-500"></i>
+                <span class="font-semibold text-slate-700 dark:text-slate-300">TREDT Publications Studios</span>
+                <span>&copy; <span id="currentYear">2026</span> All rights reserved.</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="openContactModal()" class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors">Help Center</button>
+                <button onclick="scrollToTop()" class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors flex items-center gap-1">
+                    <span>Back to top</span>
+                    <i class="fa-solid fa-arrow-up text-[10px]"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact / Issue Reporting Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 shadow-2xl relative transform scale-95 transition-all duration-300" id="contactModalCard">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <i class="fa-solid fa-bug"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Report an Issue / Support</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">tredtsmp.help@gmail.com</p>
+                    </div>
+                </div>
+                <button onclick="closeContactModal()" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Issue Form -->
+            <form onsubmit="sendSupportEmail(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">Issue Category</label>
+                    <select id="issueType" class="w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+                        <option value="Portal Website Bug">Portal Website Issue / Bug</option>
+                        <option value="Service Outage / Downtime">Service Outage / Offline</option>
+                        <option value="File Manager Issue">TREDT File Manager Issue</option>
+                        <option value="Weather WB Issue">TREDT Weather WB Issue</option>
+                        <option value="SMP Archives Issue">SMP Archive / Data Issue</option>
+                        <option value="General Support Inquiry">General Inquiries & Feedback</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">Affected Service</label>
+                    <select id="affectedService" class="w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+                        <option value="TREDT Portal (Main Site)">TREDT UNION Main Portal</option>
+                        <option value="TREDT File Manager">TREDT File Manager</option>
+                        <option value="TREDT Weather WB">TREDT Weather WB</option>
+                        <option value="TREDT SMP1 Archive">TREDT SMP1 Archive</option>
+                        <option value="TREDT SMP2 Archive">TREDT SMP2 Archive</option>
+                        <option value="TREDT Union Archive">TREDT Union Archive</option>
+                        <option value="Multiple Services">Multiple Services / Infrastructure</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">Subject Summary</label>
+                    <input type="text" id="issueSubject" placeholder="e.g. Weather app loading error on mobile..." required class="w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">Detailed Description</label>
+                    <textarea id="issueDetails" rows="4" placeholder="Describe what happened, error messages, or steps to reproduce..." required class="w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 resize-none"></textarea>
+                </div>
+
+                <div class="pt-2 flex items-center justify-between gap-3">
+                    <a href="mailto:tredtsmp.help@gmail.com" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                        <i class="fa-solid fa-envelope"></i> Direct mailto link
+                    </a>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-xs shadow-lg shadow-indigo-500/20 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Send Support Mail</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Box -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 glass-card px-4 py-3 rounded-xl border border-indigo-500/40 shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+            <i class="fa-solid fa-check text-sm"></i>
+        </div>
+        <div>
+            <h4 id="toastTitle" class="text-xs font-bold text-slate-900 dark:text-white">Copied!</h4>
+            <p id="toastMsg" class="text-xs text-slate-600 dark:text-slate-300">Link copied to clipboard.</p>
+        </div>
+    </div>
+
+    <script>
+        // Core Data Array representing the External Services
+        const servicesData = [
+            {
+                id: 'file-manager',
+                title: 'TREDT File Manager',
+                url: 'https://tredt-file-manager-frontend.onrender.com/',
+                brief: 'A secure cloud file management tool designed to effortlessly access our digital assets anytime.',
+                icon: 'fa-cloud-arrow-up',
+                category: 'Utilities',
+                status: 'Live',
+                statusColor: 'emerald',
+                badgeText: 'Cloud Storage',
+                accentGradient: 'from-indigo-500 to-blue-600',
+                features: ['Secure Cloud Storage', 'Directory Management', 'Instant Asset Access']
+            },
+            {
+                id: 'weather-wb',
+                title: 'TREDT Weather WB',
+                url: 'https://tredt-weather-wb.netlify.app/',
+                brief: 'Real-time weather forecasting platform delivering live temperature updates, atmospheric insights, and accurate meteorological forecasts for the specific location.',
+                icon: 'fa-cloud-sun-rain',
+                category: 'Utilities',
+                status: 'Live',
+                statusColor: 'emerald',
+                badgeText: 'Forecasting',
+                accentGradient: 'from-cyan-500 to-blue-500',
+                features: ['Live Meteorological Data', 'Temperature & Atmospheric Insights']
+            },
+            {
+                id: 'smp1-archive',
+                title: 'TREDT SMP1 Archive',
+                url: 'https://tredtsmp1-archive.netlify.app/',
+                brief: 'Comprehensive historical archives and community records for TREDT SMP Season 1, preserving key builds, logs, and legacy milestones.',
+                icon: 'fa-cubes',
+                category: 'Minecraft',
+                status: 'Archived',
+                statusColor: 'amber',
+                badgeText: 'Season 1 Legacy',
+                accentGradient: 'from-amber-500 to-orange-600',
+                features: ['Historical Chat & Chat Logs', 'Season 1 Build Showcase', 'Faction Milestones & Records', 'World Download Repositories']
+            },
+            {
+                id: 'smp2-archive',
+                title: 'TREDT SMP2 Archive',
+                url: 'https://tredt-smp2-archive.netlify.app/',
+                brief: 'Comprehensive historical archives and community records for TREDT SMP Season 2, preserving key builds and logs.',
+                icon: 'fa-cubes',
+                category: 'Minecraft',
+                status: 'Archived',
+                statusColor: 'amber',
+                badgeText: 'Season 2 Legacy',
+                accentGradient: 'from-purple-500 to-pink-600',
+                features: ['World Records Showcase', 'Community Landmark Maps']
+            },
+            {
+                id: 'union-archive',
+                title: 'TREDT Union Archive',
+                url: 'https://tredtunion-archive.netlify.app/',
+                brief: 'Centralized database and documentation archive detailing the complete history, structure, announcements, and key initiatives of TREDT Union.',
+                icon: 'fa-vault',
+                category: 'Documentation',
+                status: 'Live Hub',
+                statusColor: 'emerald',
+                badgeText: 'Official Portal',
+                accentGradient: 'from-emerald-500 to-teal-600',
+                features: ['Official Charters & Policies', 'Central Directive Records', 'Project History Logs', 'Community Announcements']
+            }
+        ];
+
+        // State variables
+        let activeTabId = 'file-manager';
+        let currentViewMode = 'tab'; // 'tab' or 'grid'
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let currentTheme = 'light'; // Default Theme is Light
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('currentYear');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+            initTheme();
+            renderTabsNav();
+            renderTabDetail();
+            renderGridCards();
+        });
+
+        // Theme Switcher Functions
+        function initTheme() {
+            const savedTheme = localStorage.getItem('tredt_theme') || 'light';
+            applyTheme(savedTheme);
+        }
+
+        function toggleTheme() {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+        }
+
+        function applyTheme(theme) {
+            currentTheme = theme;
+            localStorage.setItem('tredt_theme', theme);
+
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeBtnText = document.getElementById('themeBtnText');
+
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                html.classList.remove('light');
+                if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-amber-400';
+                if (themeBtnText) themeBtnText.textContent = 'Light Mode';
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-indigo-600';
+                if (themeBtnText) themeBtnText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Switch View Modes (Tabs vs Grid)
+        function switchViewMode(mode) {
+            currentViewMode = mode;
+            const tabBtn = document.getElementById('viewTabBtn');
+            const gridBtn = document.getElementById('viewGridBtn');
+            const tabContainer = document.getElementById('tabViewContainer');
+            const gridContainer = document.getElementById('gridViewContainer');
+
+            if (mode === 'tab') {
+                tabBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 bg-indigo-600 text-white shadow-sm";
+                gridBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 flex items-center gap-2";
+                tabContainer.classList.remove('hidden');
+                gridContainer.classList.add('hidden');
+            } else {
+                gridBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 bg-indigo-600 text-white shadow-sm";
+                tabBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 flex items-center gap-2";
+                gridContainer.classList.remove('hidden');
+                tabContainer.classList.add('hidden');
+            }
+        }
+
+        // Render Top Horizontal Tabs Nav
+        function renderTabsNav() {
+            const tabsList = document.getElementById('tabsList');
+            tabsList.innerHTML = '';
+
+            const filteredServices = getFilteredServices();
+
+            if (filteredServices.length === 0) {
+                tabsList.innerHTML = `<span class="text-xs text-slate-500 italic py-2">No matching services found for current filter.</span>`;
+                return;
+            }
+
+            // Ensure active tab is valid
+            if (!filteredServices.some(s => s.id === activeTabId) && filteredServices.length > 0) {
+                activeTabId = filteredServices[0].id;
+                renderTabDetail();
+            }
+
+            filteredServices.forEach(service => {
+                const isActive = service.id === activeTabId;
+                const tabBtn = document.createElement('button');
+                tabBtn.className = `glass-tab px-4 py-3 rounded-xl flex items-center gap-3 transition-all cursor-pointer font-medium text-xs sm:text-sm ${isActive ? 'active' : ''}`;
+                tabBtn.onclick = () => selectTab(service.id);
+
+                tabBtn.innerHTML = `
+                    <div class="w-7 h-7 rounded-lg ${isActive ? 'bg-indigo-500/20 text-indigo-600 dark:text-indigo-300' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'} flex items-center justify-center transition-colors">
+                        <i class="fa-solid ${service.icon}"></i>
+                    </div>
+                    <span class="whitespace-nowrap font-semibold">${service.title}</span>
+                    <span class="w-2 h-2 rounded-full ${service.statusColor === 'emerald' ? 'bg-emerald-500 dark:bg-emerald-400' : 'bg-amber-500 dark:bg-amber-400'}"></span>
+                `;
+
+                tabsList.appendChild(tabBtn);
+            });
+        }
+
+        // Select tab and re-render
+        function selectTab(id) {
+            activeTabId = id;
+            renderTabsNav();
+            renderTabDetail();
+        }
+
+        // Render Active Tab Detail Card
+        function renderTabDetail() {
+            const detailCard = document.getElementById('tabDetailCard');
+            const service = servicesData.find(s => s.id === activeTabId);
+
+            if (!service) {
+                detailCard.innerHTML = `<div class="p-8 text-center text-slate-500">Select a service tab to view details.</div>`;
+                return;
+            }
+
+            const statusBadgeClass = service.statusColor === 'emerald' 
+                ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' 
+                : 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
+
+            detailCard.innerHTML = `
+                <!-- Background Accent Blur -->
+                <div class="absolute -right-16 -top-16 w-64 h-64 bg-gradient-to-br ${service.accentGradient} opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-white/10 relative z-10">
+                    <div class="flex items-start sm:items-center gap-4">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${service.accentGradient} p-[2px] shadow-xl shrink-0">
+                            <div class="w-full h-full bg-slate-900 dark:bg-slate-950 rounded-[14px] flex items-center justify-center">
+                                <i class="fa-solid ${service.icon} text-2xl sm:text-3xl text-indigo-300"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="px-2.5 py-0.5 rounded-md border text-[10px] font-mono font-semibold uppercase tracking-wider ${statusBadgeClass}">
+                                    <i class="fa-solid fa-circle text-[6px] mr-1"></i>${service.status}
+                                </span>
+                                <span class="px-2.5 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-300 text-[10px] font-medium">
+                                    ${service.badgeText}
+                                </span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">${service.title}</h3>
+                        </div>
+                    </div>
+
+                    <!-- Direct Launch Action Button -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="copyServiceUrl('${service.url}')" class="px-3.5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-white/10 text-xs font-semibold transition-all flex items-center gap-2" title="Copy Link">
+                            <i class="fa-solid fa-link"></i>
+                            <span>Copy Link</span>
+                        </button>
+                        
+                        <button onclick="openPreviewFrame('${service.url}', '${service.title}')" class="px-3.5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-white/10 text-xs font-semibold transition-all flex items-center gap-2" title="Toggle Live Frame Preview">
+                            <i class="fa-solid fa-window-maximize"></i>
+                            <span>Live Preview</span>
+                        </button>
+
+                        <a href="${service.url}" target="_blank" rel="noopener noreferrer" 
+                           class="group px-5 py-3 rounded-xl bg-gradient-to-r ${service.accentGradient} text-white font-bold text-sm shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3">
+                            <span>${service.title}</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Brief & Detailed Specs Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6 relative z-10">
+                    <div class="lg:col-span-2 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2 font-semibold">Overview Brief</h4>
+                            <p class="text-slate-800 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-normal bg-slate-100/80 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-white/5">
+                                "${service.brief}"
+                            </p>
+                        </div>
+
+                        <div class="mt-6">
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 font-semibold">Key Highlights & Modules</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                ${service.features.map(f => `
+                                    <div class="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-100/80 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-slate-300">
+                                        <i class="fa-solid fa-circle-check text-indigo-600 dark:text-indigo-400 text-xs"></i>
+                                        <span>${f}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct URL Box -->
+                    <div class="glass-card p-5 rounded-xl border border-slate-200 dark:border-white/10 flex flex-col justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-mono text-slate-500 dark:text-slate-400 font-semibold block mb-1">Target Endpoint URL</span>
+                            <div class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-white/10 text-xs font-mono text-indigo-600 dark:text-indigo-300 break-all flex items-center justify-between gap-2">
+                                <span class="truncate">${service.url}</span>
+                                <i class="fa-solid fa-globe text-slate-400 dark:text-slate-500 shrink-0"></i>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-200 dark:border-white/5 text-xs text-slate-600 dark:text-slate-400 flex flex-col gap-2">
+                            <div class="flex justify-between">
+                                <span>Category:</span>
+                                <strong class="text-slate-800 dark:text-slate-200">${service.category}</strong>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Protocol:</span>
+                                <strong class="text-emerald-600 dark:text-emerald-400 font-mono">HTTPS Encrypted</strong>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Access Rights:</span>
+                                <strong class="text-slate-800 dark:text-slate-200">Public Access</strong>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <a href="${service.url}" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-lg bg-indigo-600/10 dark:bg-indigo-600/20 hover:bg-indigo-600/20 dark:hover:bg-indigo-600/30 text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 dark:hover:text-white border border-indigo-500/30 text-xs font-bold transition-all">
+                                Launch Service
+                            </a>
+                            <button onclick="openContactModal('${service.title}')" class="w-full text-center py-2 rounded-lg bg-slate-200 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 text-xs font-medium transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-flag text-[10px]"></i>
+                                <span>Report issue with this service</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render All Services Grid View
+        function renderGridCards() {
+            const gridContainer = document.getElementById('gridViewContainer');
+            gridContainer.innerHTML = '';
+
+            const filteredServices = getFilteredServices();
+
+            if (filteredServices.length === 0) {
+                gridContainer.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 dark:text-slate-400 glass-card rounded-2xl">No services found matching search query.</div>`;
+                return;
+            }
+
+            filteredServices.forEach(service => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-6 flex flex-col justify-between gap-6 hover:border-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group";
+
+                const statusBadgeClass = service.statusColor === 'emerald' 
+                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' 
+                    : 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
+
+                card.innerHTML = `
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${service.accentGradient} p-[2px] shadow-lg">
+                                <div class="w-full h-full bg-slate-900 dark:bg-slate-950 rounded-[10px] flex items-center justify-center">
+                                    <i class="fa-solid ${service.icon} text-xl text-indigo-300"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-md border text-[10px] font-mono font-semibold uppercase ${statusBadgeClass}">
+                                ${service.status}
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="text-[10px] font-medium text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">${service.badgeText}</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">${service.title}</h3>
+                        </div>
+
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed bg-slate-100/80 dark:bg-slate-950/40 p-3 rounded-lg border border-slate-200 dark:border-white/5">
+                            ${service.brief}
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-2">
+                        <a href="${service.url}" target="_blank" rel="noopener noreferrer" 
+                           class="w-full py-3 px-4 rounded-xl bg-gradient-to-r ${service.accentGradient} text-white font-bold text-xs shadow-md hover:shadow-indigo-500/30 hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <span>${service.title}</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 px-1">
+                            <span>Category: ${service.category}</span>
+                            <button onclick="copyServiceUrl('${service.url}')" class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors">
+                                <i class="fa-regular fa-copy mr-1"></i>Copy URL
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                gridContainer.appendChild(card);
+            });
+        }
+
+        // Search & Category Filtering Helpers
+        function getFilteredServices() {
+            return servicesData.filter(service => {
+                const matchesCat = currentFilter === 'all' || 
+                    (currentFilter === 'Minecraft' && service.category === 'Minecraft') ||
+                    (currentFilter === 'Utilities' && service.category === 'Utilities') ||
+                    (currentFilter === 'Documentation' && service.category === 'Documentation');
+
+                const query = searchQuery.toLowerCase().trim();
+                const matchesSearch = !query || 
+                    service.title.toLowerCase().includes(query) || 
+                    service.brief.toLowerCase().includes(query) ||
+                    service.category.toLowerCase().includes(query);
+
+                return matchesCat && matchesSearch;
+            });
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value;
+            renderTabsNav();
+            renderTabDetail();
+            renderGridCards();
+        }
+
+        function filterCategory(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "cat-filter-btn px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium transition-all";
+                } else {
+                    btn.className = "cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all";
+                }
+            });
+            renderTabsNav();
+            renderTabDetail();
+            renderGridCards();
+        }
+
+        // Live Iframe Drawer Preview
+        function openPreviewFrame(url, title) {
+            const previewSection = document.getElementById('previewSection');
+            const iframe = document.getElementById('serviceIframe');
+            const previewTitle = document.getElementById('previewTitle');
+            const previewExternalBtn = document.getElementById('previewExternalBtn');
+            const loader = document.getElementById('iframeLoader');
+
+            loader.style.display = 'flex';
+            previewTitle.textContent = `Live Frame Preview: ${title}`;
+            previewExternalBtn.href = url;
+            iframe.onload = hideIframeLoader;
+            iframe.src = url;
+
+            previewSection.classList.remove('hidden');
+            previewSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideIframeLoader() {
+            const loader = document.getElementById('iframeLoader');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }
+        window.hideIframeLoader = hideIframeLoader;
+
+        function closePreviewFrame() {
+            const previewSection = document.getElementById('previewSection');
+            const iframe = document.getElementById('serviceIframe');
+            iframe.src = '';
+            previewSection.classList.add('hidden');
+        }
+
+        // Contact Modal Handlers
+        function openContactModal(serviceName = '') {
+            const modal = document.getElementById('contactModal');
+            const modalCard = document.getElementById('contactModalCard');
+            if (serviceName) {
+                const serviceSelect = document.getElementById('affectedService');
+                if (serviceSelect) {
+                    for (let opt of serviceSelect.options) {
+                        if (opt.value.toLowerCase().includes(serviceName.toLowerCase()) || serviceName.toLowerCase().includes(opt.value.toLowerCase())) {
+                            opt.selected = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalCard.classList.remove('scale-95');
+            modalCard.classList.add('scale-100');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            const modalCard = document.getElementById('contactModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+        }
+
+        function sendSupportEmail(e) {
+            e.preventDefault();
+            const issueType = document.getElementById('issueType').value;
+            const affectedService = document.getElementById('affectedService').value;
+            const issueSubject = document.getElementById('issueSubject').value;
+            const issueDetails = document.getElementById('issueDetails').value;
+
+            const subject = encodeURIComponent(`[TREDT SUPPORT] ${issueType} - ${issueSubject}`);
+            const body = encodeURIComponent(
+                `Support Request / Issue Report\n` +
+                `------------------------------------\n` +
+                `Category: ${issueType}\n` +
+                `Affected Service: ${affectedService}\n` +
+                `Summary: ${issueSubject}\n\n` +
+                `Details / Steps to Reproduce:\n${issueDetails}\n\n` +
+                `------------------------------------\n` +
+                `Sent from TREDT UNION Services Portal`
+            );
+
+            const mailtoUrl = `mailto:tredtsmp.help@gmail.com?subject=${subject}&body=${body}`;
+            
+            closeContactModal();
+            showToast('Opening Mail Client...', 'Drafting email to tredtsmp.help@gmail.com');
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+            }, 400);
+        }
+
+        // Copy URL to Clipboard with custom Toast
+        function copyServiceUrl(url) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => showToast('Link Copied!', url))
+                .catch(() => fallbackCopy(url));
+            } else {
+                fallbackCopy(url);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showToast('Link Copied!', text);
+        }
+
+        function showToast(title, msg) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMsg').textContent = msg;
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
