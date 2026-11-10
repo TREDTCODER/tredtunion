@@ -265,7 +265,7 @@
                 
                 <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 text-xs text-slate-500 dark:text-slate-400">
                     <span class="font-medium">Filter:</span>
-                    <button onclick="filterCategory('all')" class="cat-filter-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium transition-all" data-cat="all">All (6)</button>
+                    <button onclick="filterCategory('all')" class="cat-filter-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium transition-all" data-cat="all">All (7)</button>
                     <button onclick="filterCategory('Utilities')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Utilities">Utilities</button>
                     <button onclick="filterCategory('Minecraft')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Minecraft">Minecraft</button>
                     <button onclick="filterCategory('Documentation')" class="cat-filter-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all" data-cat="Documentation">Docs</button>
@@ -469,6 +469,7 @@
                         <option value="Service Outage / Downtime">Service Outage / Offline</option>
                         <option value="File Manager Issue">TREDT File Manager Issue</option>
                         <option value="Weather WB Issue">TREDT Weather WB Issue</option>
+                        <option value="Armor Stand Studio Issue">TREDT Armor Stand Studio Issue</option>
                         <option value="SMP Archives Issue">SMP Archive / Data Issue</option>
                         <option value="General Support Inquiry">General Inquiries & Feedback</option>
                     </select>
@@ -480,6 +481,7 @@
                         <option value="TREDT Portal (Main Site)">TREDT UNION Main Portal</option>
                         <option value="TREDT File Manager">TREDT File Manager</option>
                         <option value="TREDT Weather WB">TREDT Weather WB</option>
+                        <option value="TREDT Armor Stand Studio">TREDT Armor Stand Studio</option>
                         <option value="TREDT SMP1 Archive">TREDT SMP1 Archive</option>
                         <option value="TREDT SMP2 Archive">TREDT SMP2 Archive</option>
                         <option value="TREDT Union Archive">TREDT Union Archive</option>
@@ -601,6 +603,19 @@ const servicesData = [
         badgeText: 'Season 3 Map',
         accentGradient: 'from-emerald-500 to-cyan-600',
         features: ['Interactive Latest World Map', 'Multi-Dimensional Perspective View']
+    },
+    {
+        id: 'armor-stand-studio',
+        title: 'TREDT Armor Stand Studio',
+        url: 'https://tredtarmorstandstudio.netlify.app/',
+        brief: 'A creative studio tool for designing and posing Minecraft armor stands, letting builders craft custom poses and setups for their worlds with ease.',
+        icon: 'fa-user-shield',
+        category: 'Utilities',
+        status: 'Live',
+        statusColor: 'emerald',
+        badgeText: 'Creative Tool',
+        accentGradient: 'from-rose-500 to-indigo-600',
+        features: ['Custom Armor Stand Posing', 'Live Visual Preview', 'Quick Setup for Builders']
     }
 ];
         // State variables
